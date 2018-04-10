@@ -2,7 +2,6 @@
 #include <string.h>
 #include <stdlib.h>
 #define FILE_READ "Iliad.txt"
-#define JUPITER "Jupiter"
 int main(){
   FILE * f;
   int count[16],i=0;
