@@ -20,7 +20,7 @@ int main(){
     {"Vulcan","VULCAN"},
     {"Venus","VENUS"},
     {"Mars","MARS"},
-    {"Hellen","HELLEN"},
+    {"Hellen","HELEN"},
     {"Pluto","PLUTO"},
     {"Ceres","CERES"},
     {"Paris","PARIS"},
