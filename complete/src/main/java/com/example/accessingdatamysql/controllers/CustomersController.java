@@ -1,12 +1,12 @@
 package com.example.accessingdatamysql.controllers;
 
 import com.example.accessingdatamysql.dto.CreateCustomerDto;
+import com.example.accessingdatamysql.dto.UpdateCustomerDto;
 import com.example.accessingdatamysql.entities.Customer;
 import com.example.accessingdatamysql.services.CustomersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -14,7 +14,6 @@ import java.util.List;
 @RestController	// This means that this class is a Controller
 @RequestMapping("/customers") // This means URL's start with /demo (after Application path)
 public class CustomersController {
-
 	private final CustomersService customersService;
 
 	@Autowired
@@ -33,18 +32,29 @@ public class CustomersController {
 		return customersService.create(customerDto);
 	}
 
-	//This returns a JSON or XML with the users
+	//This returns a JSON with the users
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping
 	public List<Customer> list() {
 		return customersService.list();
 	}
 
-	@GetMapping("/{phone}")
+	@GetMapping("/phone/{phone}")
 	public Customer findByPhone(
-			@PathVariable(value = "phone") String phone
+			@PathVariable(value = "phone")
+			String phone
 	){
 		return customersService.findByPhone(phone);
+	}
+
+	@PatchMapping("/id/{id}")
+	public Customer update(
+			@PathVariable(value = "id") Long id,
+			@Valid
+			@RequestBody
+			UpdateCustomerDto updateCustomerDto
+	) {
+		return customersService.update(id, updateCustomerDto);
 	}
 
 }

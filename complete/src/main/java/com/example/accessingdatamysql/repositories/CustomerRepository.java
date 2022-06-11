@@ -10,4 +10,6 @@ import com.example.accessingdatamysql.entities.Customer;
 public interface CustomerRepository extends CrudRepository<Customer, Integer> {
     Customer findByPhone(String phone);
     Customer findTopByOrderByIdDesc();
+    Customer findById(Long Id);
+    Boolean existsByPhone(String phone);
 }
